@@ -35,7 +35,7 @@ $(function() {
             allFeeds.forEach(function(feed){
                 expect(feed.url).toBeDefined();
                 expect(feed.url).not.toBe(null);
-            })
+            });
          });
 
         /* TODO: Write a test that loops through each feed
@@ -46,7 +46,7 @@ $(function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined;
                 expect(feed.name).not.toBe(null);
-            })
+            });
          });
     });
 
@@ -59,19 +59,29 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+         var menuHidden = $('body').hasClass('menu-hidden');
+
          it('is hidden', function(){
-            expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            expect(menuHidden).toBeTruthy();
          });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
-          it('changes visibility on click', function(){
+         describe('is clicked', function(){
+            var menuIcon = $('.menu-icon-link');
+            var body = $('body');
 
-          });
+            beforeEach(function(){
+                // use .trigger() to simulate a click on menu-icon-link before each spec
+                menuIcon.trigger('click');
+            });
 
+            it('and appears', function(){
+                expect(body.hasClass('menu-hidden')).toBeFalsy();
+            });
+
+            it('and disappears', function(){
+                expect(body.hasClass('menu-hidden')).toBeTruthy();
+            });
+        });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
