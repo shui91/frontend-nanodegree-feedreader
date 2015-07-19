@@ -110,7 +110,7 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-    describe('New Feed Selection', function() {
+    describe('News Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -145,5 +145,34 @@ $(function() {
                 done();
             })
          })
+    });
+    
+    // New Test Suite to test for future functionality of adding and removing Feeds from allFeeds
+    describe('allFeed Modification', function(){
+        var newName = 'test name';
+        var newURL = 'www.testurl.com';
+        var newFeedItem = {name: newName, url: newURL};
+        var ogFeedLen = allFeeds.length; // set the original feed length
+        var newItem // set new feed item variable here
+
+        it('should add a new feed', function(){
+            addFeed(newName, newURL);
+            expect(ogFeedLen).toBe(ogFeedLen++); // after addFeed, we should see the feed length increase by 1
+            expect(allFeeds[allFeeds.length-1]).toMatch(newFeedItem);
+            // removed these tests in favor of the above test for DRY purposes
+            // expect(allFeeds[allFeeds.length-1].name).toBe(newName); 
+            // expect(allFeeds[allFeeds.length-1].url).toBe(newURL);
+            newItem = allFeeds[allFeeds.length-1]; //update new feed item to be the test subject
+            console.log(newItem);
+        })
+
+        it('should remove a feed', function(){
+            removeFeed(6);
+            var newFeedLen = allFeeds.length;
+            //console.log(newFeedLen); check feed length after removal
+            //console.log(ogFeedLen-1); check feed length before removal
+            expect(newFeedLen).toEqual(ogFeedLen-1);
+            expect(allFeeds[allFeeds.length-1]).not.toBe[newItem]; // compare new last feed item to stored variable to ensure the last item is removed
+        })
     });
 }());
