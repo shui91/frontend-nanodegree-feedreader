@@ -93,17 +93,17 @@ function loadFeed(id, cb) {
     });
 }
 
-// function addFeed(name, url){
-//     allFeeds.push({name: name, url: url});
-//     console.log(allFeeds.length);
-//     //console.log(allFeeds); 
-//     //console.log(allFeeds[allFeeds.length -1]); //check if newName and newURL are logged
-// }
+function addFeed(name, url){
+    allFeeds.push({name: name, url: url});
+    console.log(allFeeds.length);
+    //console.log(allFeeds); 
+    //console.log(allFeeds[allFeeds.length -1]); //check if newName and newURL are logged
+}
 
-// function removeFeed(id){
-//     allFeeds.splice(id, 1);
-//     //console.log(allFeeds[allFeeds.length -1]); //check if item is removed and is back to Tesla
-// }
+function removeFeed(id){
+    allFeeds.splice(id, 1);
+    //console.log(allFeeds[allFeeds.length -1]); //check if item is removed and is back to Tesla
+}
 
 /* Google API: Loads the Feed Reader API and defines what function
  * to call when the Feed Reader API is done loading.
