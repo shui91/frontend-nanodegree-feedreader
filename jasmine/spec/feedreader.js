@@ -166,6 +166,7 @@ $(function() {
             //console.log(newItem);
         })
 
+        // this test is actually somewhat dependant on the previous test as it takes the newItem for comparison..there is room for improvement here
         it('should remove a feed', function(){
             removeFeed(6);
             var newFeedLen = allFeeds.length;
