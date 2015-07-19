@@ -21,10 +21,18 @@ var allFeeds = [
     }, {
         name: 'Linear Digressions',
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
+    }, {
+        name: 'The Economist - Business and Finance',
+        url: 'http://www.economist.com/sections/business-finance/rss.xml'
+    }, {
+        name: 'Tesla Financial Releases',
+        url: 'http://apps.shareholder.com/rss/rss.aspx?channels=7196&companyid=ABEA-4CW8X0&sh_auth=465338416%2E0%2E0%2E42206%2E160f0627716b993d7ddad1b60ea8001f'
     }
 ];
 
-console.log(allFeeds[0]);    
+console.log(allFeeds[0]);
+console.log(allFeeds.length);
+console.log(allFeeds);    
 
 
 /* This function starts up our application. The Google Feed
@@ -48,6 +56,7 @@ function loadFeed(id, cb) {
     var feedUrl = allFeeds[id].url,
         feedName = allFeeds[id].name,
         feed = new google.feeds.Feed(feedUrl);
+        feed.setNumEntries(5);
 
     /* Load the feed using the Google Feed Reader API.
      * Once the feed has been loaded, the callback function
