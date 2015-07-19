@@ -34,7 +34,7 @@ $(function() {
          it('has url', function(){
             allFeeds.forEach(function(feed){
                 expect(feed.url).toBeDefined();
-                expect(feed.url).not.toBe(null);
+                expect(feed.url).not.toBe(null); // I chose to use "null" because that means nothing was assigned/there is no value
             });
          });
 
@@ -163,7 +163,7 @@ $(function() {
             // expect(allFeeds[allFeeds.length-1].name).toBe(newName); 
             // expect(allFeeds[allFeeds.length-1].url).toBe(newURL);
             newItem = allFeeds[allFeeds.length-1]; //update new feed item to be the test subject
-            console.log(newItem);
+            //console.log(newItem);
         })
 
         it('should remove a feed', function(){
