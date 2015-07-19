@@ -2,6 +2,37 @@
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
 
+## How to Run The Project
+
+Download or clone this repository onto your local machine and run index.html to inspect the Feed Reader app
+
+To inspect the JavaScript for the Feed Reader app, navigate to js/app.js
+The related Jasmine files can be found in jasmine/spec/feedreader.js to review the test suites
+
+## Included Test Suites
+
+### Original Udacity Specified Test Suites
+
+- The RSS Feed suite tests that the feeds are defined
+	- As well as have a name and url
+- The Menu suite tests that the menu element is hidden by default
+	- This suite also tests for the menu appearing and disappearing on click
+- The Initial Entries suite ensures that the loadFeed function loads at least a single entry
+	- This is an example of a test accounting for asynchronous aspects
+- The New Feed Selection Suite tests that when new feeds are loaded on screen that the content actually changes
+	- This test also includes accounting for asynchronous aspects
+
+### Additional Testing Suite outside of Udacity requirements
+
+- The allFeed Modification suite tests for the future ability to add/remove feeds 
+	- The addFeed function is added into app.js to pass the test
+		- This function simply pushes a new Object that has a name and url to allFeeds
+		- This is tested by comparing the input to the last item of allFeeds. If they match we know it's been added correctly, if not then it has not been added
+		- Another expectation is that the length of allFeeds to increase by one
+	- The removeFeed function is added to app.js to pass the test
+		- This function uses a user given id and .splice to remove an item in the array
+		- This test takes the newest added feed item and checks the last item of allFeeds to see if it's still there. If it's gone then we know it's been removed.
+		- An additional expectation is that the allFeeds length is one less than after we added a new Feed
 
 ## Why this Project?
 
