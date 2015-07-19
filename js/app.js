@@ -7,6 +7,7 @@
  */
 
 // The names and URLs to all of the feeds we'd like available.
+// allFeeds is an array of Objects containing urls and their names
 var allFeeds = [
     {
         name: 'Udacity Blog',
@@ -23,7 +24,8 @@ var allFeeds = [
     }
 ];
 
-console.log(allFeeds.url);
+console.log(allFeeds[0]);    
+
 
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this

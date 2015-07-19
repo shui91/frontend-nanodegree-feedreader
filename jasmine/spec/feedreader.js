@@ -61,6 +61,7 @@ $(function() {
          */
          var menuHidden = $('body').hasClass('menu-hidden');
 
+         // looks to see if body has the class menu-hidden
          it('is hidden', function(){
             expect(menuHidden).toBeTruthy();
          });
@@ -69,6 +70,8 @@ $(function() {
             var menuIcon = $('.menu-icon-link');
             var body = $('body');
 
+            // use of beforeEach because of DRY, we can trigger the click once
+            // then expect the body to have class menu-hidden or not
             beforeEach(function(){
                 // use .trigger() to simulate a click on menu-icon-link before each spec
                 menuIcon.trigger('click');
@@ -92,7 +95,19 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-    })
+         var container = $('.feed');
+         // done() in beforeEach signals to framework that the async function is done
+         // so we can continue to test, this helps to signal which tests rely on this async execution
+
+         beforeEach(function(done){
+            loadFeed(0, done);
+         });
+
+         it('has one entry', function(done){
+            expect(container.children().length).not.toBe(0);
+            done();
+         });
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
@@ -100,5 +115,29 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    })
+         var ogContent;
+         var simContent;
+
+        // beforeEach spec we will load the first feed and store the entry content from jQuery's .html()
+        // we will also loadFeed(1) and store the content from that entry to be compared in the spec
+         beforeEach(function(done){
+            // loading the 0th Feed
+            loadFeed(0, function(){
+                // storing the html content of 0th entry
+                ogContent = $('.entry').html();
+                // load next feed item
+                loadFeed(1, function(){
+                    //store the content for comparison and signal that async fn is done
+                    simContent = $('.entry').html();
+                    done();
+                });
+            });
+         });
+
+         it('has new content', function(done){
+            //expect new content when new feeds are loaded!
+            expect(ogContent).not.toBe(simContent);
+            done();
+         });
+    });
 }());
