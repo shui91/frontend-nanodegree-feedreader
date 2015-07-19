@@ -30,8 +30,8 @@ var allFeeds = [
     }
 ];
 
-console.log(allFeeds);
-console.log(allFeeds.length);
+//console.log(allFeeds);
+//console.log('original length' + " " + allFeeds.length);
 
 
 /* This function starts up our application. The Google Feed
@@ -95,13 +95,14 @@ function loadFeed(id, cb) {
 
 function addFeed(name, url){
     allFeeds.push({name: name, url: url});
-    console.log(allFeeds.length);
+    //console.log('len after add is ' + allFeeds.length);
     //console.log(allFeeds); 
     //console.log(allFeeds[allFeeds.length -1]); //check if newName and newURL are logged
 }
 
 function removeFeed(id){
     allFeeds.splice(id, 1);
+    //console.log('len after remove is ' + allFeeds.length);
     //console.log(allFeeds[allFeeds.length -1]); //check if item is removed and is back to Tesla
 }
 

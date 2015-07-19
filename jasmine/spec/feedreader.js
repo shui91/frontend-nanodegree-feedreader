@@ -152,28 +152,33 @@ $(function() {
         var newName = 'test name';
         var newURL = 'www.testurl.com';
         var newFeedItem = {name: newName, url: newURL};
-        var ogFeedLen = allFeeds.length; // set the original feed length
+
+        var FeedLen = allFeeds.length; // set the original feed length prior to adding
         var newItem; // set new feed item variable here
 
         it('should add a new feed', function(){
             addFeed(newName, newURL);
-            expect(ogFeedLen).toBe(ogFeedLen++); // after addFeed, we should see the feed length increase by 1
+            expect(FeedLen).toBe(FeedLen++); // after addFeed, we should see the feed length increase by 1
             expect(allFeeds[allFeeds.length-1]).toMatch(newFeedItem);
             // removed these tests in favor of the above test for DRY purposes
             // expect(allFeeds[allFeeds.length-1].name).toBe(newName); 
             // expect(allFeeds[allFeeds.length-1].url).toBe(newURL);
             newItem = allFeeds[allFeeds.length-1]; //update new feed item to be the test subject
             //console.log(newItem);
+            console.log('after add test ' + FeedLen);
+            console.log(allFeeds);
         });
 
-        // this test is actually somewhat dependant on the previous test as it takes the newItem for comparison..there is room for improvement here
         it('should remove a feed', function(){
-            removeFeed(6);
-            var newFeedLen = allFeeds.length;
-            //console.log(newFeedLen); check feed length after removal
-            //console.log(ogFeedLen-1); check feed length before removal
-            expect(newFeedLen).toEqual(ogFeedLen-1);
-            expect(allFeeds[allFeeds.length-1]).not.toBe[newItem]; // compare new last feed item to stored variable to ensure the last item is removed
+            var trackRemoved = allFeeds[0];
+            removeFeed(0);
+            console.log(allFeeds);
+            console.log('after remove test ' + allFeeds.length)
+            console.log('FeedLen is ' + FeedLen)
+            //console.log(newFeedLen, "newLen"); //check feed length after removal
+            expect(allFeeds.length).toEqual(FeedLen-1);
+            expect(allFeeds[0]).not.toBe(trackRemoved); // compare new last feed item to stored variable to ensure the last item is removed
+            //expect(allFeeds[allFeeds.length-1]).not.toMatch[toBeRemoved];
         });
     });
 }());
