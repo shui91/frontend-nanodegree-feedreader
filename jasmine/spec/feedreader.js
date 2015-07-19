@@ -139,5 +139,11 @@ $(function() {
             expect(ogContent).not.toBe(newContent);
             done();
          });
+
+         afterEach(function(done){
+            loadFeed(0, function(){
+                done();
+            })
+         })
     });
 }());
