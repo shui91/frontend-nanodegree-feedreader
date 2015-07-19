@@ -116,7 +116,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
          var ogContent;
-         var simContent;
+         var newContent;
 
         // beforeEach spec we will load the first feed and store the entry content from jQuery's .html()
         // we will also loadFeed(1) and store the content from that entry to be compared in the spec
@@ -128,7 +128,7 @@ $(function() {
                 // load next feed item
                 loadFeed(1, function(){
                     //store the content for comparison and signal that async fn is done
-                    simContent = $('.entry').html();
+                    newContent = $('.entry').html();
                     done();
                 });
             });
@@ -136,7 +136,7 @@ $(function() {
 
          it('has new content', function(done){
             //expect new content when new feeds are loaded!
-            expect(ogContent).not.toBe(simContent);
+            expect(ogContent).not.toBe(newContent);
             done();
          });
     });
