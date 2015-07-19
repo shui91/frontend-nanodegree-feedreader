@@ -30,9 +30,8 @@ var allFeeds = [
     }
 ];
 
-console.log(allFeeds[0]);
+console.log(allFeeds);
 console.log(allFeeds.length);
-console.log(allFeeds);    
 
 
 /* This function starts up our application. The Google Feed
@@ -56,6 +55,7 @@ function loadFeed(id, cb) {
     var feedUrl = allFeeds[id].url,
         feedName = allFeeds[id].name,
         feed = new google.feeds.Feed(feedUrl);
+        // updates number of Entries shown on screen
         feed.setNumEntries(5);
 
     /* Load the feed using the Google Feed Reader API.
@@ -91,6 +91,18 @@ function loadFeed(id, cb) {
             cb();
         }
     });
+}
+
+function addFeed(name, url){
+    allFeeds.push({name: name, url: url});
+    console.log(allFeeds.length);
+    //console.log(allFeeds); 
+    //console.log(allFeeds[allFeeds.length -1]); //check if newName and newURL are logged
+}
+
+function removeFeed(id){
+    allFeeds.splice(id, 1);
+    //console.log(allFeeds[allFeeds.length -1]); //check if item is removed and is back to Tesla
 }
 
 /* Google API: Loads the Feed Reader API and defines what function
