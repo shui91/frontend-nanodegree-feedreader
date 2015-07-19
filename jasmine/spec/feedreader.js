@@ -13,7 +13,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
-    describe('RSS Feeds', function() {
+    describe('RSS Feeds', function(){
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
          * empty. Experiment with this before you get started on
@@ -21,7 +21,7 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('are defined', function(){
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -110,7 +110,7 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-    describe('News Feed Selection', function() {
+    describe('News Feed Selection', function(){
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -143,8 +143,8 @@ $(function() {
          afterEach(function(done){
             loadFeed(0, function(){
                 done();
-            })
-         })
+            });
+         });
     });
     
     // New Test Suite to test for future functionality of adding and removing Feeds from allFeeds
@@ -153,7 +153,7 @@ $(function() {
         var newURL = 'www.testurl.com';
         var newFeedItem = {name: newName, url: newURL};
         var ogFeedLen = allFeeds.length; // set the original feed length
-        var newItem // set new feed item variable here
+        var newItem; // set new feed item variable here
 
         it('should add a new feed', function(){
             addFeed(newName, newURL);
@@ -164,7 +164,7 @@ $(function() {
             // expect(allFeeds[allFeeds.length-1].url).toBe(newURL);
             newItem = allFeeds[allFeeds.length-1]; //update new feed item to be the test subject
             //console.log(newItem);
-        })
+        });
 
         // this test is actually somewhat dependant on the previous test as it takes the newItem for comparison..there is room for improvement here
         it('should remove a feed', function(){
@@ -174,6 +174,6 @@ $(function() {
             //console.log(ogFeedLen-1); check feed length before removal
             expect(newFeedLen).toEqual(ogFeedLen-1);
             expect(allFeeds[allFeeds.length-1]).not.toBe[newItem]; // compare new last feed item to stored variable to ensure the last item is removed
-        })
+        });
     });
 }());
