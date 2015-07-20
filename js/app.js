@@ -102,6 +102,7 @@ function addFeed(name, url){
 
 function removeFeed(id){
     allFeeds.splice(id, 1);
+    //console.log(allFeeds);
     //console.log('len after remove is ' + allFeeds.length);
     //console.log(allFeeds[allFeeds.length -1]); //check if item is removed and is back to Tesla
 }

@@ -165,20 +165,20 @@ $(function() {
             // expect(allFeeds[allFeeds.length-1].url).toBe(newURL);
             newItem = allFeeds[allFeeds.length-1]; //update new feed item to be the test subject
             //console.log(newItem);
-            console.log('after add test ' + FeedLen);
+            console.log('len after add test ' + FeedLen);
             console.log(allFeeds);
         });
 
         it('should remove a feed', function(){
-            var trackRemoved = allFeeds[0];
-            removeFeed(0);
+            var trackRemoved = allFeeds[0]; // the original 0th feed before removeal
+            removeFeed(0); // removing 0th feed
             console.log(allFeeds);
-            console.log('after remove test ' + allFeeds.length)
-            console.log('FeedLen is ' + FeedLen)
+            console.log('len after remove test ' + allFeeds.length)
+            console.log('stored item FeedLen is ' + FeedLen)
             //console.log(newFeedLen, "newLen"); //check feed length after removal
             expect(allFeeds.length).toEqual(FeedLen-1);
-            expect(allFeeds[0]).not.toBe(trackRemoved); // compare new last feed item to stored variable to ensure the last item is removed
-            //expect(allFeeds[allFeeds.length-1]).not.toMatch[toBeRemoved];
+            expect(allFeeds[0]).not.toBe(trackRemoved); // check if 0th feed has been removed
+            //expect(allFeeds[allFeeds.length-1]).not.toMatch[newItem]; // old version where I would check if addFeed's feed was still in the array 
         });
     });
 }());
